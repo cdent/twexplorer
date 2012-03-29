@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TiddlyWeb API Explorer</title>
+        <link rel="stylesheet" href="explorer.css" />
+    </head>
+    <body>
+        <header>
+        Explore TiddlyWeb
+        <div id="footer">
+        <ul>
+            <li><a href="http://tiddlyweb.com/">TiddlyWeb</a></li>
+            <li><a
+                href="http://tiddlyspace.com/">TiddlySpace</a></li>
+            <li><a href="http://cdent.tiddlyspace.com/">cdent's
+                tiddlyspace</a></li>
+        </ul>
+        </div>
+        </header>
+        <div id="main">
+            <div class="overview">
+                <p>Use this tool to explore the <a
+                    href="http://tiddlyweb.tiddlyspace.com/HTTP%20API">TiddlyWeb
+                    HTTP API</a>
+                with live data. Choose a route to see what you can
+                do and then run one of the options.</p>
+            </div>
+            <div class="interface">
+                <form name="routeinput">
+                    <label>available routes: <select name="route">
+                    </select></label><br/>
+                    <label>available representations: <select name="rep">
+                    </select></label><br/>
+                    <label>available methods: <select name="method">
+                    </select></label>
+                </form>
+                <div id="uri">
+                </div>
+                <form name="runinput">
+                    <input type="submit" value="go!">
+                </form>
+                <p><a href="#info">Jump to Route Description</a>.</p>
+            </div>
+            <div class="outputs">
+                <div class="raw">
+                    raw
+                </div>
+                <div class="parsed">
+                    parsed
+                </div>
+                <div id="info" class="info">
+                </div>
+            </div>
+        </div>
+    </body>
+    <script
+        src="http://tiddlyspace.com/bags/common/tiddlers/jquery.js"></script>
+    <script src="explorer.js"></script>
+</html>

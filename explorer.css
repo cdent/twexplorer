@@ -1,0 +1,69 @@
+html, body {
+}
+
+html {
+    background-color: black;
+}
+
+body {
+    background-color: white;
+    padding: 2em;
+}
+
+.outputs {
+    width: 100%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border: thin solid black;
+}
+
+.outputs > div {
+    padding: 1em;
+}
+
+#uri {
+    padding: 1em;
+    font: 125% "Andale Mono", "Lucida Console", "Bitstream Vera Sans Mono", "Courier New", monospace;
+}
+
+.info {
+    margin-top: 1em;
+    clear: both;
+    border-top: thin solid black;
+    font-size: 75%;
+}
+
+.raw {
+    width: 45%;
+    float: left;
+    white-space: pre-wrap;
+    font: 75% "Andale Mono", "Lucida Console", "Bitstream Vera Sans Mono", "Courier New", monospace;
+}
+
+.parsed {
+    width: 45%;
+    float: right;
+}
+
+header {
+    background-color: black;
+    font-size: 2em;
+    color: white;
+    padding: 1em;
+}
+
+#footer {
+    font-size: 50%;
+    position: absolute;
+    top: 3em;
+    right: 2em;
+}
+#footer a {
+    color: white;
+}
+
+#footer ul, #footer li {
+    text-align: center;
+    padding: 1em;
+    display: inline;
+}
