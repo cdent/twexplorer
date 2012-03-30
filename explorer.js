@@ -122,6 +122,9 @@ $(function() {
 
     function displayOutput(data, rep, type) {
         if (rep == 'html' && type && type.match(/text\/html/)) {
+            data = data.replace(/<link[^>]*>/g, '')
+                .replace(/<script.*\/script>/g, '');
+            console.log(data);
             $('.raw').html(data);
         } else {
             $('.raw').html('<pre>' + data + '</pre>');
