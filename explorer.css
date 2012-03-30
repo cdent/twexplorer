@@ -1,20 +1,65 @@
-html, body {
-}
-
-html {
-    background-color: black;
-}
-
 body {
-    background-color: white;
-    padding: 2em;
+    /*background: #F0F4F8; */
+    background: white;
+    font-family: "helvetica neue", sans-serif;
+    line-height: 1.4;
+}
+
+header {
+    padding: .5em 1em .5em 1em;
+    background-color: #DCE7F1;
+    margin: .5em .5em 0 .5em;
+    border-radius: 1em 1em 0 0 / 4em 4em 0 0;
+    font-size: 2em;
+    box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+label {
+    width: 25%;
+    display: block;
+    float: left;
+    clear: left;
+    text-align: right;
+}
+
+button {
+    margin-top: .5em;
+    width: 100%;
+    box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.5);
+    border-radius: .5em;
+    font-size: 150%;
+}
+
+
+.controls {
+    overflow: auto;
+    padding: 1em;
+}
+#main {
+    margin-left: 1em;
+    margin-right: 1em;
+    padding: 1em;
+    background: #F0F4F8;
+    box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+.overview {
+    float: right;
+    width: 45%;
+}
+
+.interface {
+    float: left;
+    width: 45%;
 }
 
 .outputs {
-    width: 100%;
-    margin-top: 1em;
+    clear: both;
+    background: white;
+    margin-top: 2em;
     margin-bottom: 1em;
     border: thin solid black;
+    overflow: auto;
 }
 
 .outputs > div {
@@ -27,39 +72,44 @@ body {
 }
 
 .info {
-    margin-top: 1em;
-    clear: both;
-    border-top: thin solid black;
-    font-size: 75%;
+    float: right;
+    width: 45%;
+    font-size: 90%;
+    padding: 1em;
+    margin-bottom: 1em;
+    border-left: thin solid black;
+}
+
+.infoTitle {
+    font-size: 150%;
 }
 
 .raw {
-    width: 45%;
     float: left;
-    white-space: pre-wrap;
-    font: 75% "Andale Mono", "Lucida Console", "Bitstream Vera Sans Mono", "Courier New", monospace;
-}
-
-.parsed {
     width: 45%;
-    float: right;
+    overflow: hidden;
 }
 
-header {
-    background-color: black;
-    font-size: 2em;
-    color: white;
-    padding: 1em;
+pre, code, tt {
+        font: 90% "Andale Mono", "Lucida Console", "Bitstream Vera Sans Mono", "Courier New", monospace;
+}
+
+.raw pre {
+    white-space: pre-wrap;
+}
+
+
+.raw #footer {
+    display: none;
 }
 
 #footer {
-    font-size: 50%;
-    position: absolute;
-    top: 3em;
-    right: 2em;
-}
-#footer a {
-    color: white;
+    clear: both;
+    background-color: #DCE7F1;
+    padding: 1em;
+    margin: 0 1em 0 1em;
+    border-radius: 0 0 1em 1em / 0 0 3em 3em;
+    box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.5);
 }
 
 #footer ul, #footer li {
@@ -67,3 +117,23 @@ header {
     padding: 1em;
     display: inline;
 }
+
+a {
+    color: #BC4378;
+    text-decoration: none;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    padding: .5em 0 .5em 0;
+}
+
+h6 { font-size: 100%; }
+h5 { font-size: 105%; }
+h4 { font-size: 110%; }
+h3 { font-size: 115%; }
+h2 { font-size: 120%; }
+h1 { font-size: 125%; }
+
+dt { font-weight: bold; }
+dd { margin: 0 0 1em 0; }

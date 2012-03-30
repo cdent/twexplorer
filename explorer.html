@@ -2,11 +2,60 @@
 <html>
     <head>
         <title>TiddlyWeb API Explorer</title>
+        <link rel="stylesheet"
+        href="http://tiddlyspace.com/bags/common/tiddlers/reset.css" />
         <link rel="stylesheet" href="explorer.css" />
     </head>
     <body>
         <header>
         Explore TiddlyWeb
+        </header>
+        <div id="main">
+            <div class="controls">
+                <div class="overview">
+                    <p>Use this tool to explore the <a
+                        href="http://tiddlyweb.tiddlyspace.com/HTTP%20API">TiddlyWeb
+                        HTTP API</a>
+                    with live data. Choose a route to see the
+                    available methods and representations. If you
+                    choose "get", fill in the blanks and hit "Get!"
+                    to perform the <code>GET</code> and see the
+                    results. Sample data to choose from below:</p>
+                    <dl>
+                        <dt>Recipes:</dt>
+                        <dd>tiddlyweb_public</dd>
+                        <dt>Bags:</dt>
+                        <dd>system, common, tiddlyweb_public</dd>
+                        <dt>Tiddlers:</dt>
+                        <dd>system/TiddlyWebConfig,
+                        common/jquery.js, tiddlyweb_public/Abstract
+                        Overview</dd>
+                    </dl>
+                </div>
+                <div class="interface">
+                    <form name="routeinput">
+                        <label for="route">Routes:</label>
+                        <select name="route"> </select><br/>
+                        <label for="method">Methods:</label>
+                        <select name="method"> </select><br/>
+                        <label for="rep">Representations:</label>
+                        <select name="rep"> </select>
+                    </form>
+                    <div id="uri">
+                    </div>
+                    <form name="runinput">
+                    </form>
+                </div>
+            </div>
+            <div class="outputs">
+                <div>
+                <div class="raw">
+                </div>
+                <div id="info" class="info">
+                </div>
+                </div>
+            </div>
+        </div>
         <div id="footer">
         <ul>
             <li><a href="http://tiddlyweb.com/">TiddlyWeb</a></li>
@@ -15,42 +64,6 @@
             <li><a href="http://cdent.tiddlyspace.com/">cdent's
                 tiddlyspace</a></li>
         </ul>
-        </div>
-        </header>
-        <div id="main">
-            <div class="overview">
-                <p>Use this tool to explore the <a
-                    href="http://tiddlyweb.tiddlyspace.com/HTTP%20API">TiddlyWeb
-                    HTTP API</a>
-                with live data. Choose a route to see what you can
-                do and then run one of the options.</p>
-            </div>
-            <div class="interface">
-                <form name="routeinput">
-                    <label>available routes: <select name="route">
-                    </select></label><br/>
-                    <label>available representations: <select name="rep">
-                    </select></label><br/>
-                    <label>available methods: <select name="method">
-                    </select></label>
-                </form>
-                <div id="uri">
-                </div>
-                <form name="runinput">
-                    <input type="submit" value="go!">
-                </form>
-                <p><a href="#info">Jump to Route Description</a>.</p>
-            </div>
-            <div class="outputs">
-                <div class="raw">
-                    raw
-                </div>
-                <div class="parsed">
-                    parsed
-                </div>
-                <div id="info" class="info">
-                </div>
-            </div>
         </div>
     </body>
     <script

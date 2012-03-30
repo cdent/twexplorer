@@ -45,7 +45,6 @@ $(function() {
         var selector = $('select[name="route"]');
         selector.empty();
         $('.raw').empty();
-        $('.parsed').empty();
         $.each(routeInfo, function(key, value) {
             var option = $('<option>').attr({value: key}).text(key);
             selector.append(option);
@@ -67,7 +66,10 @@ $(function() {
                 selector.append(option);
             });
         });
+        $('.raw').empty();
         $('.info').html(routeInfo[route].text);
+        var infoTitle = $('<h1>').text(route).attr('class', 'infoTitle');
+        $('.info').prepend(infoTitle);
         $('#uri').text(route);
         var runInput = $('form[name="runinput"]');
         runInput.empty()
@@ -80,11 +82,12 @@ $(function() {
                 size: '20'
             })
             .change(updateMessage);
-            var label = $('<label>').text(match);
-            label.append(input);
-            runInput.append(label);
+            var label = $('<label>')
+                .text(match + ':')
+                .attr('for', match);
+            runInput.append(label).append(input).append('<br>');
         });
-        runInput.append('<input type="submit" value="go!">')
+        runInput.append('<button type="submit">Get!</button>')
             .submit(handleRequest);
     }
 
@@ -104,6 +107,7 @@ $(function() {
                 dataType: 'text',
                 type: method,
                 success: function(data, status, xhr) {
+                    console.log('get success', status, xhr);
                     var type = xhr.getResponseHeader('content-type');
                     displayOutput(data, rep, type);
                 },
@@ -117,11 +121,10 @@ $(function() {
     }
 
     function displayOutput(data, rep, type) {
-        $('.raw').text(data);
-        if (rep == 'html' && type && type.match(/html/)) {
-            data = data.replace(/<link[^>]*>/, '')
-                .replace(/<script.*\/script>/, '');
-            $('.parsed').html(data);
+        if (rep == 'html' && type && type.match(/text\/html/)) {
+            $('.raw').html(data);
+        } else {
+            $('.raw').html('<pre>' + data + '</pre>');
         }
     }
 
