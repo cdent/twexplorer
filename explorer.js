@@ -12,6 +12,12 @@ $(function() {
         }
         , notGetMessage = "<p>Only <code>GET</code> is support for interaction.</p>";
 
+    $.ajaxSetup({
+        beforeSend: function(xhr) {
+                        xhr.setRequestHeader("X-ControlView", "false");
+                    }
+    });
+
 
     // XXX: make me real
     function errorMessage() {
@@ -98,6 +104,9 @@ $(function() {
         var rep = $('select[name="rep"]').val();
         mappedRep = repMap[rep] || rep;
         console.log('got handle request', url, method, mappedRep);
+        if (url == '/search') {
+            url = url + '?q=';
+        }
         if (method != 'get') {
             displayOutput(notGetMessage, 'html');
         } else {
@@ -107,12 +116,10 @@ $(function() {
                 dataType: 'text',
                 type: method,
                 success: function(data, status, xhr) {
-                    console.log('get success', status, xhr);
                     var type = xhr.getResponseHeader('content-type');
                     displayOutput(data, rep, type);
                 },
                 error: function(xhr, status, errorMessage) {
-                    console.log('calling update sub');
                     updateSubForm();
                     displayOutput(status + errorMessage, mappedRep);
                 }
@@ -124,7 +131,6 @@ $(function() {
         if (rep == 'html' && type && type.match(/text\/html/)) {
             data = data.replace(/<link[^>]*>/g, '')
                 .replace(/<script.*\/script>/g, '');
-            console.log(data);
             $('.raw').html(data);
         } else {
             $('.raw').html('<pre>' + data + '</pre>');
