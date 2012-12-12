@@ -1,7 +1,6 @@
 
 $(function() {
-    var routeTiddlers = 'http://tiddlyweb.tiddlyspace.com/bags/tiddlyweb_public/tiddlers.json?select=tag:httpapi;render=1'
-        , host = 'tiddlyweb.tiddlyspace.com'
+    var routeTiddlers = '/bags/tiddlyweb_public/tiddlers.json?select=tag:httpapi;render=1'
         , routeInfo = {}
         , defaultRecipe = 'tiddlyweb_public'
         , defaultBag = 'tiddlyweb_public'
@@ -59,8 +58,7 @@ $(function() {
     }
 
     function updateSubForm(ev) {
-        console.log('called update sub');
-        var route = $('select=[name="route"]').val();
+        var route = $('select[name="route"]').val();
         $.each(['rep', 'method'], function(index, type) {
             var selector = $('select[name="' + type + '"]');
             selector.empty();
@@ -103,15 +101,24 @@ $(function() {
         var method = $('select[name="method"]').val();
         var rep = $('select[name="rep"]').val();
         mappedRep = repMap[rep] || rep;
-        console.log('got handle request', url, method, mappedRep);
         if (url == '/search') {
             url = url + '?q=';
         }
+		console.log('url1', url);
+        url = url.replace(/{\w+}/g, function(match) {
+			var inputName = match.replace(/{|}/g, ''),
+				selector = 'input[name="' + inputName + '"]';
+
+			console.log(inputName, selector);
+			return $(selector).val();
+		});
+		console.log('url2', url);
+
         if (method != 'get') {
             displayOutput(notGetMessage, 'html');
         } else {
             $.ajax({
-                url: 'http://' + host + url,
+                url: url,
                 headers: {accept: mappedRep},
                 dataType: 'text',
                 type: method,
